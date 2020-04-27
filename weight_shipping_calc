@@ -1,0 +1,38 @@
+premium = 125
+
+def ground_cost(weight):
+  if weight < 2:
+    return weight * 1.50 + 20
+  elif weight < 6:
+    return weight * 3.00 + 20
+  elif weight < 10:
+    return weight * 4.00 + 20
+  else:
+    return weight * 4.75 + 20
+
+def drone_cost(weight):
+  if weight < 2:
+    return weight * 4.50 + 0
+  elif weight < 6:
+    return weight * 9.00 + 0
+  elif weight < 10:
+    return weight * 12.00 + 0
+  else:
+    return weight * 14.25 + 0
+  
+def cheapest_cost(weight):
+  if premium < ground_cost(weight):
+    return premium
+  elif premium < drone_cost(weight):
+    return premium
+  elif ground_cost(weight) < drone_cost(weight):
+    return ground_cost(weight)
+  else:
+    return drone_cost(weight)
+  
+print("Ground shipping is $" , ground_cost(8.4))
+print("Drone shipping is $" , drone_cost(1.5))
+
+print(cheapest_cost(17))
+print(cheapest_cost(4.8))
+print(cheapest_cost(41.5))
